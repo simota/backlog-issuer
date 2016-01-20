@@ -6,15 +6,18 @@ backlog課題登録ライブラリ
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem install specific_install
-gem specific_install https://gitlab.clouds-inc.jp/imota/backlog-issuer.git
+```
+mkdir backlog-issuer
+cd backlog-issuer
+echo "source 'https://rubygems.org'" > Gemfile
+echo "gem 'backlog_issuer', :git => 'https://gitlab.clouds-inc.jp/imota/backlog-issuer.git'" >> Gemfile
+bundle install --path=./vendor/gems
 ```
 
 ## Usage
 
 ```
-backlog_issuer exec --space <spacename> --projectkey <ProjectKey> --apikey <ApiKey> --csvfile <filepath>
+bundle exec `bundle show backlog_issuer`/bin/backlog-issuer exec --space <spacename> --projectkey <ProjectKey> --apikey <ApiKey> --csvfile <filepath>
 ```
 
 ## CSVフォーマット
