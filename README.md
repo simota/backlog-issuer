@@ -14,7 +14,7 @@ gem specific_install https://gitlab.clouds-inc.jp/imota/backlog-issuer.git
 ## Usage
 
 ```
-backlog-issuer exec --space <spacename> --projectkey <ProjectKey> --apikey <ApiKey> --csvfile <filepath>
+backlog_issuer exec --space <spacename> --projectkey <ProjectKey> --apikey <ApiKey> --csvfile <filepath>
 ```
 
 ## CSVフォーマット
