@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'csv'
+require 'date'
 require 'ostruct'
 
 module BacklogIssuer
@@ -50,8 +51,8 @@ module BacklogIssuer
     end
 
     def make_issue(row)
-      start_date = row[@column_map[:start_date]].gsub('/','-') rescue nil
-      due_date = row[@column_map[:due_date]].gsub('/','-') rescue nil
+      start_date = parse_date(row[@column_map[:start_date]])
+      due_date = parse_date(row[@column_map[:due_date]])
       OpenStruct.new(
         {
           issue_type: row[@column_map[:issue_type]],
@@ -65,6 +66,16 @@ module BacklogIssuer
           start_date: start_date,
           due_date: due_date
         })
+    end
+
+    private
+    def parse_date(str)
+      begin
+        date = Date.parse(str)
+        date.strftime('%Y-%m-%d')
+      rescue
+        nil
+      end
     end
   end
 end

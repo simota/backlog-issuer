@@ -7,7 +7,7 @@ module BacklogIssuer
 
     def execute
       @parser.issues.each do |issue|
-        params = make_issue_params(issue)
+        params = make_issue_params(issue)        
         issue_id = @client.issue_by_summary(issue.summary)
         if issue_id.nil?
           @client.add_issue(issue.summary, params)
